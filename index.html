@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Project</title>
+</head>
+<body>
+
+    <h1>My Personal Library</h1>
+    
+    <!-- 1. The button to open our pop-up form -->
+    <button id="new-book-btn">NEW BOOK</button>
+
+    <!-- 2. The pop-up dialog containing our form -->
+    <dialog id="book-dialog">
+        <form id="book-form" method="dialog">
+            <h2>Add New Book</h2>
+            
+            <label for="title">Title:</label>
+            <input type="text" id="title" required>
+
+            <label for="author">Author:</label>
+            <input type="text" id="author" required>
+
+            <label for="pages">Pages:</label>
+            <input type="number" id="pages" required>
+
+            <label for="read">Have you read it?</label>
+            <select id="read">
+                <option value="false">Not Read Yet</option>
+                <option value="true">Read</option>
+            </select>
+
+            <div class="form-buttons">
+                <button type="submit" id="submit-btn">Add Book</button>
+                <button type="button" id="cancel-btn">Cancel</button>
+            </div>
+        </form>
+    </dialog>
+    
+    <!-- This is where our javascript will insert the book cards -->
+    <div id="library-container"></div>
+
+    <!-- This links your HTML file to your script.js file -->
+    <script src="script.js"></script>
+    
+</body>
+</html>
