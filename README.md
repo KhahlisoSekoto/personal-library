@@ -3,8 +3,7 @@
 A dynamic web application built as part of **The Odin Project's** JavaScript course curriculum. This project demonstrates foundational Object-Oriented Programming (OOP) concepts by managing a virtual bookshelf database using JavaScript constructors, arrays, and native DOM manipulation.
 
 ## 🚀 Live Demo
-<!-- Once you deploy this via GitHub Pages later, you can add your live link right here! -->
-[View Live Project](https://github.com) 
+[View Live Project] https://khahlisosekoto.github.io/personal-library/
 
 ## ✨ Features
 * **Object Blueprinting:** Utilizes a custom `Book` constructor function to instantiate book entities with unique cryptographic tracking IDs.
