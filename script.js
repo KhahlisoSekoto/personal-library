@@ -1,20 +1,22 @@
 const myLibrary = [];
 
-
-function Book(title, author, pages, read) {
-  //Ensure every book has a complete unique tracking key for state modifications
+// Line 4-23 (Replacing my old function book)
+class Book {
+  constructor(title, author, pages, read) {
     this.id = crypto.randomUUID();
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read; 
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
 
-  
-  this.info = function() {
-    //Format the boolean state into user-friendly text for clean strinf returns
+
+  // Methods are declared directly inside the class body (prototype methods)
+  info() {
+    // Format the boolean state into user-friendly text for clean string returns
     const readStatus = this.read ? "read" : "not read yet";
     return `${this.title} by ${this.author}, ${this.pages} pages, ${readStatus}`;
-  };
+  }
 }
 
 
