@@ -105,21 +105,51 @@ cancelBtn.addEventListener("click", () => {
 
 
 bookForm.addEventListener("submit", (e) => {
-  e.preventDefault(); // Stops the page from refreshing completely
+    // 1. Grab the elements
+    const titleInput = document.getElementById("title");
+    const authorInput = document.getElementById("author");
+    const pagesInput = document.getElementById("pages");
+    const readInput = document.getElementById("read");
 
-  // Grab the values typed into the inputs
-  const title = document.getElementById("title").value;
-  const author = document.getElementById("author").value;
-  const pages = document.getElementById("pages").value;
-  const read = document.getElementById("read").value === "true"; // Converts string to boolean
+    // 2. Clear any previous custom error messages
+    titleInput.setCustomValidity("");
+    authorInput.setCustomValidity("");
+    pagesInput.setCustomValidity("");
 
-  // Add the new book to our array
-  addBookToLibrary(title, author, pages, read);
+    // 3. Clean and parse values
+    const title = titleInput.value.trim();
+    const author = authorInput.value.trim();
+    const pages = parseInt(pagesInput.value, 10);
+    const read = readInput.value === "true";
 
-  // Refresh our book cards layout on screen
-  displayBooks();
+    // 4. Run advanced validation rules using native bubbles
+    if (title.length < 2) {
+        titleInput.setCustomValidity("The book title must be at least 2 characters long.");
+        titleInput.reportValidity(); // Tells the browser to show the bubble immediately
+        e.preventDefault(); // Stop the form submission
+        return;
+    }
 
-  // Reset the inputs and close the pop-up
-  bookForm.reset();
-  dialog.close();
+    if (author.length < 3) {
+        authorInput.setCustomValidity("The author's name must be at least 3 characters long.");
+        authorInput.reportValidity();
+        e.preventDefault();
+        return;
+    }
+
+    if (isNaN(pages) || pages <= 0) {
+        pagesInput.setCustomValidity("Please enter a realistic number of pages (greater than 0).");
+        pagesInput.reportValidity();
+        e.preventDefault();
+        return;
+    }
+
+    // 5. If it passes all rules, let it add the book
+    e.preventDefault(); // Prevents page reload
+    addBookToLibrary(title, author, pages, read);
+    displayBooks();
+
+    // Reset and close
+    bookForm.reset();
+    dialog.close();
 });
